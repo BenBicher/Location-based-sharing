@@ -1,0 +1,29 @@
+-------------------------------------------
+
+DataBase (MongoDB):
+
+    - NumOfPeople;
+    - HostName;
+    - Description;
+    - Radios;
+    - Location (lat, lng);
+
+-------------------------------------------
+
+Server (Node.Js):
+
+    - GetAllEvents;
+    - SaveNewEvent;
+    - Login/Register (?);
+
+-------------------------------------------
+
+Client (Angular):
+
+    - NavigationBar;
+    - Login (OAuth_2.0);
+    - GoogleMaps;
+    - NewEvent;
+    - EventDescription;
+
+-------------------------------------------
