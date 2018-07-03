@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,31 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
-  title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+
+  title: string = 'Location Base Sharing';
+  
+  ngOnInit() {
+    var mapProp = {
+      // center: new google.maps.LatLng(31.771959, 35.217018),
+      
+      // mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+  }
+  zoom: number = 5;
+  lat: number = 31.771959;
+  lng: number = 35.217018;
+  findMe() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.showPosition(position);
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  showPosition(position) {
+    this.lat = position.coords.latitude;
+    this.lng = position.coords.longitude;
+    this.zoom = 15;
+  }
 }
