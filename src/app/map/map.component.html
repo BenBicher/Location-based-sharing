@@ -1,8 +1,15 @@
 <h1 >{{ title }}</h1>
 <button class="btn btn-primary" (click)="findMe()">Get your current location</button>
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-<agm-map class="agm-map" [latitude]="lat" [longitude]="lng"[zoom]="zoom">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<div class="container">
+  <div class="form-group">
+    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+  </div>
+</div>
+<agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
+  <agm-marker 
+  [latitude]="latitude"
+  [longitude]="longitude"
+  *ngIf="locationChosen"></agm-marker>
 </agm-map>
-<!-- <app-map></app-map> -->
+
+
