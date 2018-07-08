@@ -8,12 +8,11 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent {
-  title: string = 'Location Base Sharing';
-  zoom: number = 10;
-  public latitude: number = 31.771959;
-  public longitude: number = 35.217018;
+  zoom: number = 0;
+  latitude: number;
+  longitude: number;
   locationChosen = false;
-  public searchControl: FormControl;
+  searchControl: FormControl;
   
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -22,12 +21,6 @@ export class MapComponent {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {}
-  
-  onChoseLocation(event){
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
-    this.locationChosen = true;
-  }
   
   ngOnInit() {
     this.searchControl = new FormControl();
@@ -48,11 +41,18 @@ export class MapComponent {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
+          this.zoom = 16;
           this.locationChosen = true;
         });
       });
     });
+  }
+  
+  onChoseLocation(event){
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+    this.zoom = 15;
   }
   
   findMe() {
@@ -67,6 +67,7 @@ export class MapComponent {
   showPosition(position) {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
+    this.locationChosen = true;
     this.zoom = 15;
   }
   

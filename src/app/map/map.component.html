@@ -1,15 +1,14 @@
-<h1 >{{ title }}</h1>
-<button class="btn btn-primary" (click)="findMe()">Get your current location</button>
-<div class="container">
-  <div class="form-group">
-    <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+<div class="jumbotron">
+  <div class="input-group">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" (click)="findMe()">Get your current location</button>
+    </span>
+      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+        #search [formControl]="searchControl">
+  </div>
+  <div>
+    <agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
+      <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>
+    </agm-map>
   </div>
 </div>
-<agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
-  <agm-marker 
-  [latitude]="latitude"
-  [longitude]="longitude"
-  *ngIf="locationChosen"></agm-marker>
-</agm-map>
-
-
