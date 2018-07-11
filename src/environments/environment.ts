@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   auth: {
     clientID: 'jfvBOfigNYtdDxw7A7I8Kz7VdiiY4FIH',
-    domain: 'ben-bicher.auth0.com/', // e.g., you.auth0.com
-    audience: 'http://localhost:3001', // e.g., http://localhost:3001
+    domain: 'ben-bicher.auth0.com/',
+    audience: 'http://localhost:3001',
     redirect: 'http://localhost:4200/callback',
     scope: 'openid profile email'
   }

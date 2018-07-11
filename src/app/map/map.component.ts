@@ -1,6 +1,5 @@
 import { Component, Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
-// import { Marker } from '@agm/core/services/google-maps-types';
 import { MarkerService} from '../services/markers.sevice'
 
 
@@ -47,12 +46,12 @@ export class MapComponent {
   
   ngOnInit() {  }
   
-  // onChoseLocation(event){
-  //   this.latitude = event.coords.lat;
-  //   this.longitude = event.coords.lng;
-  //   this.locationChosen = true;
-  //   this.zoom = 15;
-  // }
+  onChoseLocation(event){
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+    this.zoom = 15;
+  }
 
   removeMarker(marker){
     console.log('Removing marker....');
