@@ -1,14 +1,29 @@
-<div class="jumbotron">
-  <div class="input-group">
-    <span class="input-group-btn">
-      <button class="btn btn-primary" (click)="findMe()">Get your current location</button>
-    </span>
-      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-        #search [formControl]="searchControl">
-  </div>
+<br>
+<div class="container">
   <div>
     <agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
-      <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="locationChosen"></agm-marker>
+      <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m, i)" 
+      [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)"
+      >
+      <!-- *ngIf="locationChosen" -->
+    <agm-info-window>
+      <br>
+      <li>
+          <strong>{{m.name}}</strong>
+      </li>
+      <li>
+        <strong>Description: {{m.comment}}</strong>
+      </li>
+      <li>
+         <strong>Number Of Participants: {{m.numOfParticipants}}</strong>
+      </li>
+      <li>
+        <strong>Publisher: {{m.publisher}}</strong>
+     </li>
+     <br>
+     <a class="delete" (click)="removeMarker(m)">Delete</a>
+    </agm-info-window>
+    </agm-marker>
     </agm-map>
   </div>
 </div>

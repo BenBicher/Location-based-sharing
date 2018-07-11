@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { AuthService } from './auth/auth.service';
-import { logging } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +8,7 @@ import { logging } from 'protractor';
 })
 export class AppComponent {
   title: string = 'Location Base Sharing';
+  
   constructor(private authService: AuthService) { }
 
   login() {
