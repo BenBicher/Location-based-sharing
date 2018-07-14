@@ -1,0 +1,22 @@
+<div class="animation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar">
+                        <img src="{{userPictureUrl}}" alt="" />
+                    </div>
+                    <div class="content">
+                        <p>{{ userName }}
+                            <br>{{ userGender }}
+                            <br> {{ userMail }}</p>
+                        <p>
+                            <button class="btn btn-primary btn-lg font-weight-bold" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Log Out</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

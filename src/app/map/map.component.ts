@@ -1,6 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MarkerService} from '../services/markers.sevice'
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -15,20 +16,27 @@ export class MapComponent {
   //zoom level
   zoom: number = 2;
   //start position
-  latitude: number;
-  longitude: number;
+  latitude: number = 31.771959;
+  longitude: number = 35.217018;
   
   locationChosen = false;
   searchControl: FormControl;
   
   markers: marker[]
   
-  constructor(private _markerService: MarkerService) {
-    this.markers = this._markerService.getMarkers();
+  constructor(private _markerService: MarkerService,
+    private authService: AuthService) {
+      setTimeout(() => {
+        if(this.authService.isLoggedIn){
+          this.markers = this._markerService.getMarkers();
+          this.zoom = 8;
+        }
+      }, 2000);
+    
   }
   
   clickedMarker(marker:marker, index: number){
-    console.log(marker.name + index)
+    console.log(marker.name + ' marker')
   }
   
   markerDragEnd(marker:any, $event:any){
@@ -38,6 +46,7 @@ export class MapComponent {
       longitude: parseFloat(marker.longitude),
       draggable: false
     }
+    console.log($event)
     var newLat = $event.coords.lat;
     var newLng = $event.coords.lng;
 
@@ -46,15 +55,8 @@ export class MapComponent {
   
   ngOnInit() {  }
   
-  onChoseLocation(event){
-    this.latitude = event.coords.lat;
-    this.longitude = event.coords.lng;
-    this.locationChosen = true;
-    this.zoom = 15;
-  }
-
   removeMarker(marker){
-    console.log('Removing marker....');
+      console.log('Removing marker....');
     for(var i = 0; i < this.markers.length; i++){
       if(marker.latitude == this.markers[i].latitude && marker.longitude == this.markers[i].longitude){
         this.markers.splice(i, 1);

@@ -1,11 +1,12 @@
 <br>
 <div class="container">
   <div>
-    <agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
+      <h1 *ngIf="!authService.isLoggedIn" class="alert" >You have to login first</h1>
+
+    <agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
       <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m, i)" 
       [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)"
       >
-      <!-- *ngIf="locationChosen" -->
     <agm-info-window>
       <br>
       <li>
@@ -21,7 +22,7 @@
         <strong>Publisher: {{m.publisher}}</strong>
      </li>
      <br>
-     <a class="delete" (click)="removeMarker(m)">Delete</a>
+     <button class="delete" (click)="removeMarker(m)">Delete</button>
     </agm-info-window>
     </agm-marker>
     </agm-map>

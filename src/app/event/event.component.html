@@ -1,8 +1,11 @@
+<div >
+</div>
 <br>
 <div class="container animation">
   <div class="col-md-12">
     <div class="panel panek-default">
       <div class="panel-heading">
+        <h1 class="alert" *ngIf="!authService.isLoggedIn">You have to login first</h1>
         <h3 class="panel-title">Add New Event</h3>
       </div>
       <div class="panel-body">
@@ -43,7 +46,8 @@
             <input class="form-control col-3" type="text" [(ngModel)]="markerPublisher" name="markerPublisher" placeholder="Publisher">
           </div>
           <br>
-          <input class="btn btn-primary" type="submit" value="Add New">
+        <h1 class="alert" *ngIf="!authService.isLoggedIn">You have to login first</h1>
+        <input *ngIf="authService.isLoggedIn" class="btn btn-primary" type="submit" value="Add New">
         </form>
       </div>
     </div>

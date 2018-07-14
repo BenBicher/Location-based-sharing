@@ -28,8 +28,8 @@ export class MarkerService extends Init {
 
         for (var i = 0; i < markers.length; i++) {
             if (marker.lat == markers[i].lat && marker.lng == markers[i].lng) {
-                marker[i].lat = newLat;
-                marker[i].lng = newLng;
+                marker[i].latitude = newLat;
+                marker[i].longitude = newLng;
             }
         }
         // set ls markers again

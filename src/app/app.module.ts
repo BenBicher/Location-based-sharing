@@ -11,6 +11,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { MarkerService } from './services/markers.sevice';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -25,8 +26,8 @@ import { MarkerService } from './services/markers.sevice';
     }),
     AppRoutingModule
   ],
-  providers: [AuthService,MapComponent, MarkerService],
-  declarations: [ AppComponent, MapComponent, EventComponent, CallbackComponent ],
+  providers: [AuthService,MapComponent, MarkerService, UserProfileComponent],
+  declarations: [ AppComponent, MapComponent, EventComponent, CallbackComponent, UserProfileComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

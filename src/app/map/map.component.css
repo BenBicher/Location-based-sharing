@@ -2,7 +2,9 @@
     height: 500px;
     /* width: 700px; */
   }
-
+  .alert{
+    color: red;
+  }
   .jumbotron {
     position: absolute;
     top: 50%;

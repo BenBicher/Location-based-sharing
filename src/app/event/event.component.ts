@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core'
 import { MarkerService} from '../services/markers.sevice'
 import { MapsAPILoader } from '../../../node_modules/@agm/core';
 import { FormControl } from '../../../node_modules/@angular/forms';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-event',
@@ -22,9 +24,11 @@ export class EventComponent implements OnInit {
   currnetLocation:boolean;
 
   constructor(
+    private router: Router,
+    private authService: AuthService,
     private _markerService: MarkerService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone) {}
   
   addMarker(){
     console.log('Adding');
@@ -43,6 +47,7 @@ export class EventComponent implements OnInit {
       publisher: this.markerPublisher
     }
     this._markerService.addMarker(newMarker);
+    this.router.navigate(['map']);
   }
   
   @ViewChild("search")

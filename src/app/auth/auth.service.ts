@@ -21,7 +21,7 @@ export class AuthService {
   userProfile: any;
   accessToken: string;
   authenticated: boolean;
-
+  logedInUserProfile: any;
   // constructor(private router: Router) {
   //   this.getAccessToken();
   // }
@@ -51,16 +51,16 @@ export class AuthService {
       }
     });
   }
-
   getUserInfo(authResult) {
     // Use access token to retrieve user's profile and set session
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
+        this.logedInUserProfile = profile;
         this._setSession(authResult, profile);
       }
     });
   }
-
+  
   private _setSession(authResult, profile) {
     // Save authentication data and update login status subject
     this.expiresAt = authResult.expiresIn * 1000 + Date.now();
