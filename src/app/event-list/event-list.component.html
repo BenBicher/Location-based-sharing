@@ -1,0 +1,27 @@
+<br>
+<ul  class="animation" *ngFor="let m of events; let i = index">
+  <button class="btn btn-outline-primary btn-lg col-sm-10" (click)="showOn(m)">{{m.name}}</button><br>
+  <div *ngIf="m.isShowOn">
+    <br>
+    <p>
+      <strong>Description: {{ m.comment }}</strong>
+    </p>
+    <p>
+      <strong>Nember of participants: {{ m.numOfParticipants }}</strong>
+    </p>
+    <p>
+      <strong>Publisher: {{ m.publisher }}</strong>
+    </p>
+    <p>
+      <strong>People That Join: {{ m.peopleThatJoined }}</strong>
+    </p>
+    <p *ngIf="m.picture">
+        <img src="{{ m.picture }}">
+      </p>
+    <br>
+    <div class="row right-alighn">
+      <button class="btn btn-primary" (click)="removeMarker(m)">Delete</button>
+      <button class="right-alighn btn btn-primary" (click)="joinEvent(m)">Join</button>
+    </div>
+  </div>
+</ul>

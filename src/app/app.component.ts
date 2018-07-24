@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { AuthService } from './auth/auth.service';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +15,7 @@ export class AppComponent {
   constructor(private authService: AuthService,) {
     setTimeout(() => {
       if(this.authService.isLoggedIn){
-        this.userPictureUrl = this.authService.logedInUserProfile.picture;
+        this.userPictureUrl = JSON.parse(localStorage.getItem('currentprofile')).picture;
       }
     }, 2000);
    }
@@ -27,6 +26,10 @@ export class AppComponent {
   }
 
   userShowOn(){
-    this.userCard = true;
+    if(this.userCard == false){
+      this.userCard = true;
+    } else {
+      this.userCard = false;
+    }
   }
 }

@@ -66,6 +66,7 @@ export class AuthService {
     this.expiresAt = authResult.expiresIn * 1000 + Date.now();
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
+    localStorage.setItem('currentprofile', JSON.stringify(profile));
     this.authenticated = true;
   }
 
@@ -77,11 +78,14 @@ export class AuthService {
       returnTo: 'http://localhost:4200',
       clientID: environment.auth.clientID
     });
+    localStorage.removeItem('currentprofile');
   }
 
   get isLoggedIn(): boolean {
     // Check if current date is before token
     // expiration and user is signed in locally
+    if(localStorage.getItem('currentprofile'))
+    return true;
     return Date.now() < this.expiresAt && this.authenticated;
   }
 }

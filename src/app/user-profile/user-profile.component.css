@@ -1,3 +1,10 @@
+.leftAlighn{
+  position: absolute;
+  top: 70%;
+  z-index: 2;
+  right: 5%;
+}
+
 .src-image {
     display: none;
   }
@@ -57,3 +64,5 @@
     from{ bottom:0px; opacity:0 } 
     to{ bottom:100; opacity:1 }
   }
+
+ 

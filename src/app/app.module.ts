@@ -9,14 +9,18 @@ import { MapComponent } from './map/map.component';
 import { EventComponent } from './event/event.component';
 import { CallbackComponent } from './callback/callback.component';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import { MarkerService } from './services/markers.sevice';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { EventService } from './services/event.service'
+import {HttpModule} from '@angular/http';
+import { LocationService } from './services/location.service'
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -24,10 +28,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
       apiKey: 'AIzaSyAn27B61u7vteCXhBNvExJtOqXeutTD94w',
       libraries: ["places"]
     }),
-    AppRoutingModule
+    AppRoutingModule, 
   ],
-  providers: [AuthService,MapComponent, MarkerService, UserProfileComponent],
-  declarations: [ AppComponent, MapComponent, EventComponent, CallbackComponent, UserProfileComponent ],
+  providers: [AuthService,MapComponent, UserProfileComponent, EventService, LocationService],
+  declarations: [ AppComponent, MapComponent, EventComponent, CallbackComponent, UserProfileComponent, EventListComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

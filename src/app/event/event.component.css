@@ -1,7 +1,12 @@
 .alert{
   color: red;
+  position: absolute;
+  left: 30%;
 }
-
+.right-alighn{
+  position: absolute;
+  left: 15px;
+}
 .form-inline > * {
     margin:15px 3px !important;}
 

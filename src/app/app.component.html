@@ -1,23 +1,24 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <div>
-  <div class="navbar-header">
-    <h1 class="text-white font-weight-bold font-italic">{{ title }}</h1>
+<app-user-profile *ngIf="userCard"></app-user-profile>
+<div>
+    <div class="navbar-header">
+      <h1 class="text-white font-weight-bold font-italic">{{ title }}</h1>
+    </div>
+    <div>
+      <button class="btn btn-primary font-weight-bold" routerLink="event">new event</button>
+      <button class="btn btn-primary margin-left font-weight-bold" routerLink="map">Events List</button>
+    </div>
   </div>
-  <div>
-    <button class="btn btn-primary font-weight-bold" routerLink="event">new event</button>
-    <button class="btn btn-primary margin-left font-weight-bold" routerLink="map">map</button>
-  </div>
-</div>
   <div class="nav navbar-nav navbar-right">
     <button class="btn btn-primary btn-lg font-weight-bold" *ngIf="!authService.isLoggedIn" (click)="login()">Log In</button>
     <div>
     </div>
-    <div class="row"  *ngIf="authService.isLoggedIn">
-        <input class="avatar" type="image" (click)="userShowOn()" src="{{userPictureUrl}}">
-        <button class="btn btn-primary btn-lg font-weight-bold" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Log Out</button>
-
-      </div>
+    <div class="row" *ngIf="authService.isLoggedIn">
+      <input class="avatar" type="image" (click)="userShowOn()" src="{{userPictureUrl}}">
+      <button class="btn btn-primary btn-lg font-weight-bold" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Log Out</button>
+      
+    </div>
   </div>
 </nav>
-<app-user-profile *ngIf="userCard"></app-user-profile>
+
 <router-outlet></router-outlet>

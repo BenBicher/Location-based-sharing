@@ -1,30 +1,43 @@
 <br>
-<div class="container">
-  <div>
-      <h1 *ngIf="!authService.isLoggedIn" class="alert" >You have to login first</h1>
-
-    <agm-map class="agm-map" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-      <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m, i)" 
-      [latitude]="m.latitude" [longitude]="m.longitude" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)"
-      >
-    <agm-info-window>
-      <br>
-      <li>
-          <strong>{{m.name}}</strong>
-      </li>
-      <li>
-        <strong>Description: {{m.comment}}</strong>
-      </li>
-      <li>
-         <strong>Number Of Participants: {{m.numOfParticipants}}</strong>
-      </li>
-      <li>
-        <strong>Publisher: {{m.publisher}}</strong>
-     </li>
-     <br>
-     <button class="delete" (click)="removeMarker(m)">Delete</button>
-    </agm-info-window>
-    </agm-marker>
+<h1 *ngIf="!authService.isLoggedIn" class="alert center">You have to login first</h1>
+<div *ngIf="authService.isLoggedIn" class="container form-group">
+  <div class="form-inline">
+    <label class="switch">
+      <input type="checkbox" (change)="isChecked = !isChecked" />
+      <span class="slider round"></span>
+    </label>
+    <h5>{{isChecked ? 'Change to map' : 'Change To list'}}</h5>
+  </div>
+  <br>
+  <app-event-list *ngIf="isChecked"></app-event-list>
+  <div *ngIf="!isChecked" class="animation">
+    <agm-map class="agm-map" [latitude]="locationService.latitude" [longitude]="locationService.longitude" [zoom]="zoom">
+      <agm-circle [latitude]="locationService.latitude" [longitude]="locationService.longitude" [radius]="radius" [fillColor]="'blue'"></agm-circle>
+      <ng-container *ngFor="let m of locationService.events; let i = index">
+        <agm-marker (markerClick)="clickedMarker(m, i)" [latitude]="m.latitude"
+          [longitude]="m.longitude">
+          <agm-info-window class="form-group">
+            <br>
+            <ul>
+              <strong>{{m.name}}</strong>
+            </ul>
+            <ul>
+              <strong>Description: {{m.comment}}</strong>
+            </ul>
+            <ul>
+              <strong>Number Of Participants: {{m.numOfParticipants}}</strong>
+            </ul>
+            <ul>
+              <strong>Publisher: {{m.publisher}}</strong>
+            </ul>
+            <br>
+            <div class="right-alighn row">
+              <button class="btn btn-primary btn-sm" (click)="removeMarker(m)">Delete</button>
+              <button class="right-alighn btn btn-primary btn-sm" (click)="joinEvent(m)">Join</button>
+            </div>
+          </agm-info-window>
+        </agm-marker>
+      </ng-container>
     </agm-map>
   </div>
 </div>

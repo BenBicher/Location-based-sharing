@@ -2,7 +2,6 @@ import { AuthGuard } from './auth/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MapComponent } from './map/map.component';
-import { AppComponent } from './app.component';
 import { CallbackComponent } from './callback/callback.component';
 import { EventComponent } from './event/event.component';
 
@@ -22,7 +21,7 @@ const routes: Routes = [
   ];
   
   @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
     providers: [AuthGuard],
     exports: [RouterModule]
   })

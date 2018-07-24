@@ -18,9 +18,9 @@ export class UserProfileComponent implements OnInit {
   
   
   ngOnInit() {
-    this.userPictureUrl = this.authService.logedInUserProfile.picture;
-    this.userName = this.authService.logedInUserProfile.name;
-    this.userGender = this.authService.logedInUserProfile.gender;
-    this.userMail = this.authService.logedInUserProfile.email;
+    this.userPictureUrl = JSON.parse(localStorage.getItem('currentprofile')).picture;
+    this.userName = JSON.parse(localStorage.getItem('currentprofile')).name;
+    this.userGender = JSON.parse(localStorage.getItem('currentprofile')).gender;
+    this.userMail = JSON.parse(localStorage.getItem('currentprofile')).email;
   }
 }
