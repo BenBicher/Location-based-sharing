@@ -15,7 +15,7 @@
     </div>
     <div class="row" *ngIf="authService.isLoggedIn">
       <input class="avatar" type="image" (click)="userShowOn()" src="{{userPictureUrl}}">
-      <button class="btn btn-primary btn-lg font-weight-bold" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Log Out</button>
+      <button class="btn btn-primary btn-lg font-weight-bold d-none d-sm-block" (click)="authService.logout()" *ngIf="authService.isLoggedIn">Log Out</button>
       
     </div>
   </div>

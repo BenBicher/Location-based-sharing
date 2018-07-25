@@ -23,7 +23,7 @@ export class AuthService {
   authenticated: boolean;
   logedInUserProfile: any;
   // constructor(private router: Router) {
-  //   this.getAccessToken();
+    // this.getAccessToken();
   // }
 
   login() {
@@ -40,7 +40,7 @@ export class AuthService {
       } else if (err) {
         console.error(`Error: ${err.error}`);
       }
-      // this.router.navigate(['/']);
+      // this.router.navigate(['/callback']);
     });
   }
 
@@ -75,7 +75,8 @@ export class AuthService {
     // Ensure that returnTo URL is specified in Auth0
     // Application settings for Allowed Logout URLs
     this.auth0.logout({
-      returnTo: 'http://localhost:4200',
+      returnTo: 'http://location-base-sh-1530431619237.firebaseapp.com',
+      // returnTo: 'http://localhost:4200',
       clientID: environment.auth.clientID
     });
     localStorage.removeItem('currentprofile');

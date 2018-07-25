@@ -8,7 +8,7 @@ import { EventService } from '../services/event.service';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css'],
+  styleUrls: ['./event.component.scss'],
 })
 
 export class EventComponent implements OnInit {
@@ -27,6 +27,7 @@ export class EventComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private authService: AuthService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private _eventService: EventService) {}

@@ -1,10 +1,11 @@
-  .agm-map {
+@import '../../styles-variables';
+
+
+.agm-map {
     height: 400px;
     width: 100%;
   }
-  .alert{
-    color: red;
-  }
+
   .jumbotron {
     position: absolute;
     top: 50%;

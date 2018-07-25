@@ -1,12 +1,14 @@
 <br>
-<h1 *ngIf="!authService.isLoggedIn" class="alert center">You have to login first</h1>
+<div *ngIf="!authService.isLoggedIn" class="container alert alert-danger" role="alert">
+    <strong>ERROR!</strong> You have to login first
+  </div>
 <div *ngIf="authService.isLoggedIn" class="container form-group">
   <div class="form-inline">
     <label class="switch">
       <input type="checkbox" (change)="isChecked = !isChecked" />
       <span class="slider round"></span>
     </label>
-    <h5>{{isChecked ? 'Change to map' : 'Change To list'}}</h5>
+    <h5>{{isChecked ? 'Change to map (search around me)' : 'Change To list (to show all the events'}}</h5>
   </div>
   <br>
   <app-event-list *ngIf="isChecked"></app-event-list>

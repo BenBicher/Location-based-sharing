@@ -3,16 +3,29 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
+  firebase: {
+    apiKey: "AIzaSyCxS4ZWJvCFTNaJa0X-R9lml66XrOtwBE4",
+    authDomain: "location-base-sh-1530431619237.firebaseapp.com",
+    databaseURL: "https://location-base-sh-1530431619237.firebaseio.com",
+    projectId: "location-base-sh-1530431619237",
+    storageBucket: "location-base-sh-1530431619237.appspot.com",
+    messagingSenderId: "958486345638"
+},
   auth: {
     clientID: 'jfvBOfigNYtdDxw7A7I8Kz7VdiiY4FIH',
     domain: 'ben-bicher.auth0.com/',
     audience: 'http://localhost:3001',
-    redirect: 'http://localhost:4200/callback',
+    redirect: 'http://location-base-sh-1530431619237.firebaseapp.com/callback',
     scope: 'openid profile email'
   }
 };
 
+// user.firebase_data = {
+//   user_id: new Buffer(user.email).toString('base64'),
+//   company: !user.isSocial ? context.connection.replace(/\./g, '-') : null,
+//   foo: 'bar'
+// };
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

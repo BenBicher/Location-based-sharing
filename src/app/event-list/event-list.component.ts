@@ -6,18 +6,21 @@ import { Event } from '../models/event.model';
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css']
+  styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit {
   events: Event[];
   isShowOn: boolean = false;
-
+  currentPublisher: string;
+  
   constructor(
     private authService: AuthService,
     private _eventService: EventService) {
     if (this.authService.isLoggedIn) {
       this._eventService.getAllEvents<Event>().subscribe((data) => {
         this.events = data;
+        this.currentPublisher = JSON.parse(localStorage.getItem('currentprofile')).name;
+
       });
     }
   }

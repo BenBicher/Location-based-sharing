@@ -12,7 +12,7 @@
     <p>
       <strong>Publisher: {{ m.publisher }}</strong>
     </p>
-    <p>
+    <p *ngIf="m.publisher==currentPublisher">
       <strong>People That Join: {{ m.peopleThatJoined }}</strong>
     </p>
     <p *ngIf="m.picture">

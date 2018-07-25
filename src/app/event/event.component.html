@@ -1,6 +1,9 @@
-<h1 class="alert" *ngIf="!authService.isLoggedIn">You have to login first</h1>
 <br>
-<div class="container animation">
+<div *ngIf="!authService.isLoggedIn" class="container alert alert-danger" role="alert">
+    <strong>ERROR!</strong> You have to login first
+  </div>
+
+<div *ngIf="authService.isLoggedIn" class="container animation">
   <div class="col-md-12">
     <div class="panel panek-default">
       <div class="panel-heading">
@@ -46,9 +49,10 @@
           </div>
           <br>
           <input *ngIf="authService.isLoggedIn" class="btn btn-primary" type="submit" value="Add New">
+          <br>
+          <br>
         </form>
       </div>
     </div>
   </div>
 </div>
-<h1 class="alert" *ngIf="!authService.isLoggedIn">You have to login first</h1>

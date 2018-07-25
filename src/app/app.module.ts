@@ -15,6 +15,8 @@ import { EventListComponent } from './event-list/event-list.component';
 import { EventService } from './services/event.service'
 import {HttpModule} from '@angular/http';
 import { LocationService } from './services/location.service'
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -23,6 +25,8 @@ import { LocationService } from './services/location.service'
     HttpModule,
     CommonModule,
     FormsModule,
+    MatToolbarModule,
+    MatCardModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAn27B61u7vteCXhBNvExJtOqXeutTD94w',

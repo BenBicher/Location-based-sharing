@@ -11,7 +11,7 @@ import { formatDate } from '../../../node_modules/@angular/common';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css'],
+  styleUrls: ['./map.component.scss'],
 })
 
 @Injectable()
